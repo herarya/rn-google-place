@@ -1,4 +1,5 @@
 import {GoogleLocationDetailResult} from '../../../services/google-place-service';
+import {IPlace} from '../../../utils/interfaces';
 
 export type PropsType = {
   /**
@@ -22,4 +23,9 @@ export type PropsType = {
    */
 
   onCancel?: () => void;
+  /**
+   * function select recent
+   */
+
+  onPressRecentResult?: (place: IPlace) => void;
 };

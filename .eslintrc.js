@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: "@react-native",
+  extends: ["eslint:recommended", "prettier"],
   env: {
     es6: true,
     node: true,

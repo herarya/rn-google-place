@@ -5,6 +5,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  inputText: {
+    borderRadius: 40,
+    paddingHorizontal: 10,
+  },
   item: {
     flexDirection: 'row',
     paddingHorizontal: 10,

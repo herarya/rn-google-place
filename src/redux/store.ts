@@ -1,8 +1,10 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {setupListeners} from '@reduxjs/toolkit/query';
 import {api} from '../services/base-api';
+import places from './reducers/places';
 
 const reducers = {
+  places,
   [api.reducerPath]: api.reducer,
 };
 

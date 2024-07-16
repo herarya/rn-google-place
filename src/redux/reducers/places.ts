@@ -1,37 +1,27 @@
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {IPlace} from '../../utils/interfaces';
-import {
-  FETCH_GOOGLE_PLACES,
-  FETCH_GOOGLE_PLACES_FAILURE,
-  FETCH_GOOGLE_PLACES_SUCCESS,
-  PlacesActionTypes,
-} from '../sagas/google-place-saga';
 
 export interface IPlacesState {
-  isLoading: boolean;
-  places: IPlace[];
-  error: Error | null;
+  recentPlaces: IPlace[];
 }
 
 const initialState: IPlacesState = {
-  isLoading: false,
-  places: [],
-  error: null,
+  recentPlaces: [],
 };
 
-const placesReducer = (
-  state = initialState,
-  action: PlacesActionTypes,
-): IPlacesState => {
-  switch (action.type) {
-    case FETCH_GOOGLE_PLACES:
-      return {...state, isLoading: true};
-    case FETCH_GOOGLE_PLACES_SUCCESS:
-      return {...state, isLoading: false, places: action.payload};
-    case FETCH_GOOGLE_PLACES_FAILURE:
-      return {...state, isLoading: false, error: action.payload};
-    default:
-      return state;
-  }
-};
+const slice = createSlice({
+  name: 'place',
+  initialState: initialState as IPlacesState,
+  reducers: {
+    addRecentPlace: (state, action: PayloadAction<IPlace>) => {
+      const {placeId} = action.payload;
+      const isExist = state.recentPlaces.find(item => item.placeId === placeId);
+      if (!isExist) {
+        state.recentPlaces.push(action.payload);
+      }
+    },
+  },
+});
 
-export default placesReducer;
+export const {addRecentPlace} = slice.actions;
+export default slice.reducer;

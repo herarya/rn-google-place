@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
   errorMessage: {
     padding: 15,
   },
+  emptyImage: {
+    width: 250,
+    height: 250,
+  },
 });
 
 export default styles;

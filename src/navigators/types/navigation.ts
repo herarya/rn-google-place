@@ -1,4 +1,8 @@
+import {IPlace} from '../../utils/interfaces';
+
 export type RootStackParamList = {
   Home: undefined;
-  SearchLocation: undefined;
+  SearchLocation: {
+    onSelectPlace: (place: IPlace) => void;
+  };
 };

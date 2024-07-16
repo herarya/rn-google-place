@@ -6,6 +6,7 @@ export interface IPlace {
     };
   };
   description: string;
+  placeId: string;
 }
 
 export interface ISuccessResponse<T> {

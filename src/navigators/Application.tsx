@@ -11,7 +11,9 @@ const Application = () => {
   return (
     <NavigationContainer>
       <RootStack.Navigator initialRouteName="Home">
-        <RootStack.Screen name="Home" component={HomeScreen} />
+        <RootStack.Screen name="Home" component={HomeScreen} options={{
+            title: 'Travel maps',
+          }}/>
         <RootStack.Screen
           options={{
             presentation: 'modal',

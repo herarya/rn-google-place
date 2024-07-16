@@ -13,6 +13,8 @@ import {
 import useDebounce from '../../hooks/useDebounce';
 import styles from './styles';
 import Error from '../Error';
+import RecentPlaces from '../RecentPlaces';
+import {IPlace} from '../../utils/interfaces';
 
 const GooglePlaceAutocomplete = ({
   apiKey,
@@ -20,6 +22,7 @@ const GooglePlaceAutocomplete = ({
   language = 'en',
   onDetailResult,
   onCancel,
+  onPressRecentResult,
 }: PropsType) => {
   const [fetchPlaces, {data, error}] = useLazyFetchPlacesQuery();
   const [fetchPlaceDetails, {data: PlaceDetail, error: placeDetailError}] =
@@ -59,7 +62,7 @@ const GooglePlaceAutocomplete = ({
     setInputValue(text);
   };
 
-  const keyExtractor = (item, index: number) => index.toString();
+  const keyExtractor = (item:any, index: number) => index.toString();
 
   const renderItem = ({item}: any) => (
     <TouchableOpacity style={styles.item} onPress={() => handleOnPress(item)}>
@@ -78,6 +81,12 @@ const GooglePlaceAutocomplete = ({
     fetchPlaceDetails(query);
   };
 
+  const handleSelectRecentPlace = (item: IPlace) => {
+    if (onPressRecentResult) {
+      onPressRecentResult(item);
+    }
+  };
+
   if (error || placeDetailError) {
     return <Error />;
   }
@@ -90,16 +99,27 @@ const GooglePlaceAutocomplete = ({
     return <Error errorMessage={errorMessage} />;
   };
 
+  const renderHeader = () => {
+    const predictions = data?.data?.predictions;
+    if (predictions && predictions.length > 0) {
+      return null;
+    }
+    return <RecentPlaces onPressItem={handleSelectRecentPlace} />;
+  };
+
   return (
     <View style={styles.container}>
       <SearchBar
+        style={styles.inputText}
         defaultValue={inputValue}
-        placeholder="Search location ..."
+        placeholder="Where to?"
         showCancelButton={true}
         onChange={handleTextChange}
         cancelText="cancel"
         onCancel={() => {
-          if (onCancel) onCancel();
+          if (onCancel) {
+            onCancel();
+          }
         }}
       />
       <FlatList
@@ -108,6 +128,7 @@ const GooglePlaceAutocomplete = ({
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         ListEmptyComponent={emptyScreen}
+        ListHeaderComponent={renderHeader}
       />
     </View>
   );

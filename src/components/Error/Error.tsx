@@ -1,15 +1,19 @@
-import {View, Text} from 'react-native';
 import React from 'react';
-import {PropsType} from './types';
+import {Image, Text, View} from 'react-native';
+import {Images} from '../../assets/images';
 import styles from './styles';
-import {Icon} from '@ant-design/react-native';
+import {PropsType} from './types';
 
 const Error = ({
   errorMessage = 'Unable to load, please try again',
 }: PropsType) => {
   return (
     <View style={styles.container}>
-      <Icon testID="error-icon" name="alert" size={60} />
+      <Image
+        source={Images.empty_state}
+        resizeMode="cover"
+        style={styles.emptyImage}
+      />
       <Text style={styles.errorMessage}>{errorMessage}</Text>
     </View>
   );
