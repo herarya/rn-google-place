@@ -10,6 +10,7 @@ const Error = ({
   return (
     <View style={styles.container}>
       <Image
+        testID='error-image'
         source={Images.empty_state}
         resizeMode="cover"
         style={styles.emptyImage}
