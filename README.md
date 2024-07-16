@@ -6,11 +6,11 @@ Welcome to travel maps with react-native+ redux tool kits;
 
 | Image 1 | Image 2 | Image 3 | Image 4 | Image 5 |
 | :---:   | :---:   | :---:   | :---:   | :---:   |
-| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/5.png" width="120"> 
-| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/1.png" width="120"> 
-| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/2.png" width="120">  
-| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/3.png" width="120"> 
-| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/4.png" width="120"> 
+| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/5.png" width="120"> |
+| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/1.png" width="120"> |
+| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/2.png" width="120"> |
+| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/3.png" width="120"> |
+| <img src="https://github.com/herarya/rn-google-place/blob/main/screenshots/4.png" width="120"> |
 
 ## Requirements
 
