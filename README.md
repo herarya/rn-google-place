@@ -1,4 +1,4 @@
-# Screenshot
+# Introduction
 
 Welcome to travel maps with react-native+ redux tool kits;
 
